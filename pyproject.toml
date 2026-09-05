@@ -1,0 +1,85 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pygal_maps_world_neo-stubs"
+version = "1.1.1.1"
+requires-python = ">= 3.10"
+authors = [
+    { name = "Manuel Corsunsky Gayá", email = "manuelcorsunsky@gmail.com" },
+]
+maintainers = [
+    { name = "Manuel Corsunsky Gayá", email = "manuelcorsunsky@gmail.com" },
+]
+description = "Type stubs for pygal"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Typing :: Stubs Only",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: Visualization",
+]
+dependencies = ["typing-extensions"] #, "pygal-stubs"]
+
+[project.urls]
+Repository = "https://github.com/manucorsu/pygal_maps_world_neo-stubs"
+Issues = "https://github.com/manucorsu/pygal_maps_world_neo-stubs/issues"
+
+[project.optional-dependencies]
+dev = [
+    "hatch",
+    "black",
+    "ruff",
+    "basedpyright",
+    "mypy",
+    "pygal",
+    "lxml",
+    "pygal_maps_world_neo",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["pygal_maps_world_neo-stubs"]
+
+[tool.hatch.envs.default]
+python = "3.10"
+path = ".venv"
+features = ["dev"]
+
+[tool.black]
+target-version = ["py310"]
+line-length = 88
+include = ".pyi$"
+exclude = '/(\.git|\.venv|\.mypy_cache|\.ruff_cache|\.pytest_cache)/'
+
+[tool.ruff.lint.per-file-ignores]
+"**/*.pyi" = ["A001", "A002", "N801"]
+# In order:
+# "Variable is shadowing a Python builtin",
+# "Function argument is shadowing a Python builtin",
+# "Class name should use CapWords convention"
+
+[tool.hatch.envs.check]
+features = ["dev"]
+
+[tool.hatch.envs.check.scripts]
+all = [
+    "ruff check --fix .",
+    "black .",
+    "basedpyright",
+    "pip uninstall -y pygal_maps_world_neo-stubs",
+    "pip install .",
+    "python -m mypy.stubtest pygal_maps_world_neo --allowlist allowlist.txt",
+]
+
+[tool.basedpyright]
+reportUnsafeMultipleInheritance = false
+reportUnusedCallResult = false

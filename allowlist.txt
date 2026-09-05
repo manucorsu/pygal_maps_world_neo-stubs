@@ -1,0 +1,3 @@
+pygal_maps_world.test
+pygal_maps_world.test.test_maps
+pygal_maps_world.maps.file

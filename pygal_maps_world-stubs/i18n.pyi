@@ -1,18 +1,20 @@
-from _typeshed import Incomplete
+from collections.abc import Iterable, Mapping
 
-COUNTRIES: Incomplete
-EUR: Incomplete
-OECD: Incomplete
-NAFTA: Incomplete
-USMCA: Incomplete
-ASIA: Incomplete
-EUROPE: Incomplete
-AFRICA: Incomplete
-NORTH_AMERICA: Incomplete
-SOUTH_AMERICA: Incomplete
-OCEANIA: Incomplete
-ANTARTICA: Incomplete
-ANTARCTICA: Incomplete
-SUPRANATIONAL: Incomplete
+COUNTRIES: dict[str, str]
+EUR: list[str]
+OECD: list[str]
+NAFTA: list[str]
+USMCA: list[str]
+ASIA: list[str]
+EUROPE: list[str]
+AFRICA: list[str]
+NORTH_AMERICA: list[str]
+SOUTH_AMERICA: list[str]
+OCEANIA: list[str]
+ANTARTICA: list[str]
+ANTARCTICA: list[str]
+SUPRANATIONAL: dict[str, list[str]]
 
-def set_countries(countries, clear: bool = False) -> None: ...
+def set_countries(
+    countries: Mapping[str, str] | Iterable[tuple[str, str]], clear: bool = False
+) -> None: ...

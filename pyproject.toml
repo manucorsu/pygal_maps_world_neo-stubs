@@ -28,7 +28,7 @@ classifiers = [
     "Programming Language :: Python :: 3.14",
     "Topic :: Scientific/Engineering :: Visualization",
 ]
-dependencies = ["typing-extensions"] #, "pygal-stubs"]
+dependencies = ["typing-extensions"]
 
 [project.urls]
 Repository = "https://github.com/manucorsu/pygal_maps_world_neo-stubs"
@@ -47,7 +47,7 @@ dev = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["pygal_maps_world_neo-stubs"]
+packages = ["pygal_maps_world-stubs"]
 
 [tool.hatch.envs.default]
 python = "3.10"
@@ -77,7 +77,7 @@ all = [
     "basedpyright",
     "pip uninstall -y pygal_maps_world_neo-stubs",
     "pip install .",
-    "python -m mypy.stubtest pygal_maps_world_neo --allowlist allowlist.txt",
+    "python -m mypy.stubtest pygal_maps_world --allowlist allowlist.txt",
 ]
 
 [tool.basedpyright]
